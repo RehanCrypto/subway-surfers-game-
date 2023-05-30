@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Subway Surfers</title>
+    <style>
+        #game-container {
+            position: relative;
+            width: 600px;
+            height: 400px;
+            margin: 0 auto;
+            border: 1px solid #000;
+            overflow: hidden;
+        }
+        #player {
+            position: absolute;
+            bottom: 0;
+            width: 50px;
+            height: 50px;
+            background-color: #f00;
+        }
+    </style>
+</head>
+<body>
+    <h1>Subway Surfers</h1>
+    <div id="game-container">
+        <div id="player"></div>
+    </div>
+
+    <script>
+        var player = document.getElementById("player");
+        var container = document.getElementById("game-container");
+
+        var playerPosition = {
+            x: 0,
+            y: 0
+        };
+
+        document.addEventListener("keydown", movePlayer);
+
+        function movePlayer(e) {
+            var step = 50; // Distance to move
+
+            if (e.keyCode === 37) { // Left arrow key
+                playerPosition.x -= step;
+            } else if (e.keyCode === 39) { // Right arrow key
+                playerPosition.x += step;
+            }
+
+            player.style.transform = `translate(${playerPosition.x}px, ${playerPosition.y}px)`;
+        }
+    </script>
+</body>
+</html>
